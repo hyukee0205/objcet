@@ -7,10 +7,12 @@ export default function ProductCard({
 }) {
   const navigate = useNavigate();
   return (
-    <li onClick={() => {
-      navigate(`/products/${id}`, { state: { product } });
-    }}
-      className='rounded-lg shadow-md overflow-hidden cursor-pointer transition-all hover:scale-105'>
+    <li
+      onClick={() => {
+        navigate(`/products/${id}`, { state: { product } });
+      }}
+      className='rounded-lg shadow-md overflow-hidden cursor-pointer transition-all hover:scale-105'
+    >
       <img className='w-full bg-slate-100' src={image} alt={title} />
       <div className='mt-2 px-2 text-lg flex justify-between items-center'>
         <h3 className='truncate'>{title}</h3>
