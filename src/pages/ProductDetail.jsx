@@ -20,22 +20,35 @@ export default function ProductDetail() {
 
   return (
     <>
-      <p className='mx-12 mt-4 text-gray-700'>{category}</p>
-      <section className='flex flex-col md:flex-row p-4'>
-        <img className='w-full px-4 basis-7/12' src={image} alt={title} />
+      <section className='flex flex-col gap-x-20 justify-center md:flex-row p-4'>
+        <img className='h-auto max-w-xl px-4 basis-7/12 bg-slate-100' src={image} alt={title} />
         <div className='w-full basis-5/12 flex flex-col p-4'>
-          <h2 className='text-3xl font-bold py-2'>{title}</h2>
-          <p className='text-2xl font-bold py-2  border-b border-gray-400'>
+          <p className='text-xl underline underline-offset-4'>{category}</p>
+          <h2 className='text-2xl font-medium py-3'>{title}</h2>
+          <p className='text-xl font-medium pb-4 border-b border-gray-400'>
             ₩{price}
           </p>
-          <p className='py-4 text-lg'>{description}</p>
-          <div className='flex items-center'>
-            <label className='text-brand font-bold' htmlFor='select'>
-              옵션:
+          <p className='py-4 text-md border-b border-gray-400'>{description}</p>
+            <label className='text-brand font-bold pt-4 pb-3' htmlFor='select'>
+              Option
             </label>
             <select
               id='select'
-              className='p-2 m-4 flex-1 border-2 border-dashed border-brand outline-none'
+              className='form-select appearance-none
+              block
+              w-full
+              px-3
+              py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding bg-no-repeat
+              border border-solid border-gray-400
+              rounded
+              transition
+              ease-in-out
+              mb-4
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
               onChange={handleSelect}
               value={selected}
             >
@@ -44,7 +57,6 @@ export default function ProductDetail() {
                   <option key={index}>{option}</option>
                 ))}
             </select>
-          </div>
           <Button text='장바구니에 추가' onClick={handleClick} />
         </div>
       </section>

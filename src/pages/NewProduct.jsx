@@ -35,8 +35,9 @@ export default function NewProduct() {
   };
 
   return (
-    <section className='w-full text-center'>
-      <h2 className='text-2xl font-bold my-4'>새로운 제품 등록</h2>
+    <section className='new_product w-full text-center'>
+      <div>
+      <h2 className='text-2xl font-bold my-8'>상품등록</h2>
       {success && <p className='my-2'>✅ {success}</p>}
       {file && (
         <img
@@ -46,58 +47,82 @@ export default function NewProduct() {
         />
       )}
       <form className='flex flex-col px-12' onSubmit={handleSubmit}>
-        <input
-          type='file'
-          accept='image/*'
-          name='file'
-          required
-          onChange={handleChange}
-        />
-        <input
-          type='text'
-          name='title'
-          value={product.title ?? ''}
-          placeholder='제품명'
-          required
-          onChange={handleChange}
-        />
-        <input
-          type='number'
-          name='price'
-          value={product.price ?? ''}
-          placeholder='가격'
-          required
-          onChange={handleChange}
-        />
-        <input
-          type='text'
-          name='category'
-          value={product.category ?? ''}
-          placeholder='카테고리'
-          required
-          onChange={handleChange}
-        />
-        <input
-          type='text'
-          name='description'
-          value={product.description ?? ''}
-          placeholder='제품 설명'
-          required
-          onChange={handleChange}
-        />
-        <input
-          type='text'
-          name='options'
-          value={product.options ?? ''}
-          placeholder='옵션들(콤마(,)로 구분)'
-          required
-          onChange={handleChange}
-        />
-        <Button
-          text={isUploading ? '업로드중...' : '제품 등록하기'}
-          disabled={isUploading}
-        />
-      </form>
+        <div className='flex items-center'>
+            <label htmlFor="file">상품 이미지</label>
+            <input
+              id='file'
+              type='file'
+              accept='image/*'
+              name='file'
+              required
+              onChange={handleChange}
+            />
+          </div>
+          <div className='flex items-center'>
+            <label htmlFor="title">상품명</label>
+            <input
+              id='title'
+              type='text'
+              name='title'
+              value={product.title ?? ''}
+              required
+              onChange={handleChange}
+            />
+          </div>
+          <div className='flex items-center'>
+            <label htmlFor="price">가격</label>
+            <input
+              id='price'
+              type='number'
+              name='price'
+              value={product.price ?? ''}
+              required
+              onChange={handleChange}
+            />
+          </div>
+          <div className='flex items-center'>
+            <label htmlFor="category">카테고리</label>
+            <input
+              id='category'
+              type='text'
+              name='category'
+              value={product.category ?? ''}
+              required
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className='flex items-center'>
+            <label htmlFor="desc">상품 설명</label>
+            <input
+              id='desc'
+              type='text'
+              name='description'
+              value={product.description ?? ''}
+              required
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className='flex items-center'>
+            <label htmlFor="option">옵션</label>
+            <input
+              id='option'
+              type='text'
+              name='options'
+              value={product.options ?? ''}
+              placeholder='콤마(,)로 구분'
+              required
+              onChange={handleChange}
+            />
+          </div>
+
+          <Button
+            text={isUploading ? '업로드중...' : '제품 등록하기'}
+            disabled={isUploading}
+          />
+        </form>
+      </div>
     </section>
   );
 }
