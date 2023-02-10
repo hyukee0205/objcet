@@ -38,7 +38,7 @@ export default function NewProduct() {
     <section className='new_product w-full text-center'>
       <div>
       <h2 className='text-2xl font-bold my-8'>상품등록</h2>
-      {success && <p className='my-2'>✅ {success}</p>}
+      {success && <p className='my-2'>😃 {success}</p>}
       {file && (
         <img
           className='w-96 mx-auto mb-2'
