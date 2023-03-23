@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         brand: '#111',
+        detail: '#E5E1D8',
         height: {
           '320': '32rem',
         }

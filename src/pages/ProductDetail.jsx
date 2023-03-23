@@ -21,7 +21,7 @@ export default function ProductDetail() {
   return (
     <>
       <section className='flex flex-col gap-x-20 justify-center md:flex-row p-4'>
-        <img className='h-auto max-w-xl px-4 basis-7/12 bg-slate-100' src={image} alt={title} />
+        <img className='h-auto max-w-xl px-4 basis-7/12 bg-detail' src={image} alt={title} />
         <div className='w-full basis-5/12 flex flex-col p-4'>
           <p className='text-xl underline underline-offset-4'>{category}</p>
           <h2 className='text-2xl font-medium py-3'>{title}</h2>
