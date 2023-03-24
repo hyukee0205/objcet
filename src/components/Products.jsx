@@ -1,14 +1,11 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { getProducts } from '../api/firebase';
 import ProductCard from './ProductCard';
+import useProducts from '../hooks/useProducts';
 
 export default function Products() {
   const {
-    isLoading,
-    error,
-    data: products,
-  } = useQuery(['products'], getProducts);
+    productsQuery: {isLoading, error, data: products}
+  } = useProducts();
   return (
     <>
       <h2 className='px-24 pt-6 text-3xl font-medium'>NEW ARRIVAL</h2>
