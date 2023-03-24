@@ -34,12 +34,12 @@
 -   업로드 상태 UI (업로드 중 & 업로드 완료)
 
 
-1. 업로드 중 UI
+1. 업로드 중
 <p align='center'>
 <img width="400" src="https://user-images.githubusercontent.com/107531168/227587323-59995e00-3980-4b27-b94e-a92e2b70b0f1.png">
 </p>
 
-2. 업로드 완료 UI
+2. 업로드 완료
 <p align='center'>
 <img width="400" src="https://user-images.githubusercontent.com/107531168/227587332-ae8eaab2-edbe-4faa-88f4-244b635c25d0.png">
 </p>
