@@ -8,7 +8,7 @@
 
 🙋🏻‍♂️ 리액트를 활용한 소품샵 사이트입니다.  
 
-배포 : [https://merry-narwhal-e30dee.netlify.app](https://merry-narwhal-e30dee.netlify.app)
+배포 : [https://cerulean-macaron-651a3e.netlify.app/](https://cerulean-macaron-651a3e.netlify.app/)
 
 ## 📚 Stack
 <p align='center'>
