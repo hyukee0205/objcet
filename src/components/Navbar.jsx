@@ -9,8 +9,8 @@ import Button2 from './ui/Button2';
 export default function Navbar() {
   const { user, login, logout } = useAuthContext();
   return (
-    <header className='z-10	sticky top-0 flex justify-between px-8 py-3 bg-brand'>
-      <Link to='/' className='flex items-center text-3xl text-brand'>
+    <header className='z-10	sticky top-0 flex justify-between px-8 py-6 bg-brand'>
+      <Link to='/' className='flex items-center text-4xl text-brand'>
         <h1 className='font-medium text-slate-50'>OBJECT</h1>
       </Link>
       <nav className='flex items-center gap-4 font-semibold'>
