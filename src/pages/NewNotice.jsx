@@ -1,37 +1,44 @@
 import React, { useState } from 'react';
 import Button from '../components/ui/Button';
+import { Link } from 'react-router-dom';
+import { addOrUpdateToNotice } from '../api/firebase';
+import { useAuthContext } from '../context/AuthContext';
 
 export default function NewNotice() {
+  const {user: {uid, displayName}} = useAuthContext();
 
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  
-  const handleTitleChange = event => {
-    setTitle(event.target.value);
+
+  const [notice, setNotice] = useState({});
+
+  const handleInputChange = event => {
+    const { name, value } = event.target;
+    setNotice((notice) => ({ ...notice, [name]: value, displayName: displayName, uid: uid}));
   };
-  
-  const handleContentChange = event => {
-    setContent(event.target.value);
-  };
-  
+
   const handleSubmit = event => {
     event.preventDefault();
-    // Handle form submission
+    addOrUpdateToNotice(notice);
   };
   
   return (
-    <section className='mx-auto'> 
-      <h2 className='p-4 text-2xl text-center font-bold'>게시판 등록</h2>
-      <form onSubmit={handleSubmit} className="max-w-xl mx-auto">
-      <div className="mb-4">
-        <label htmlFor="title" className="block mb-2 font-bold">Title:</label>
-        <input type="text" id="title" value={title} onChange={handleTitleChange} className="w-full px-3 py-2 border rounded-md" />
+    <section className='p-8 mx-auto m-[80px]'> 
+      <h2 className='p-4 text-2xl text-center font-bold mb-10'>게시판 등록</h2>
+      <form onSubmit={handleSubmit} className='max-w-xl mx-auto'>
+      <div className='mb-4'>
+        <label htmlFor='title' className='block mb-2 font-bold'>Title:</label>
+        <input type='text' id='title' name='title' value={notice.title ?? ''} onChange={handleInputChange} className='w-full px-3 py-2 border rounded-md' required/>
       </div>
-      <div className="mb-4">
-        <label htmlFor="content" className="block mb-2 font-bold">Content:</label>
-        <textarea id="content" value={content} onChange={handleContentChange} rows={4} cols={50} className="w-full px-3 py-2 border rounded-md"></textarea>
+      <div className='mb-4'>
+        <label htmlFor='content' className='block mb-2 font-bold'>Content:</label>
+        <textarea id='content' name='content' value={notice.content ?? ''} required onChange={handleInputChange} rows={10} cols={50} className='w-full px-3 py-2 border rounded-md'></textarea>
       </div>
-      <Button text='게시글 작성' type="submit" className="px-4 py-2 font-bold text-white bg-blue-500 rounded-md hover:bg-blue-700" />
+      <div className='flex justify-between'>
+        <Link to='/notice' className='px-4 py-2 font-bold border border-black hover:bg-brand hover:text-white rounded-md'>목록</Link>
+        <div>
+          <Button text='등록' type='submit' design={'px-4 py-2 border border-black hover:bg-transparent hover:text-brand font-bold text-white bg-brand rounded-md mr-1'} />
+          <Link to='/notice' className='px-4 py-2 font-bold border border-black hover:bg-brand hover:text-white rounded-md'>취소</Link>
+        </div>
+      </div>
     </form>
 
     </section>

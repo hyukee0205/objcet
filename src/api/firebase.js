@@ -68,8 +68,26 @@ export async function getProducts() {
   });
 }
 
+export async function addOrUpdateToNotice(notice) {
+  const id = uuid();
+  return set(ref(database, `notice/${id}`), notice);
+  // return set(ref(database, `notice/${userId}`), notice);
+
+}
+
+export async function getNotice() {
+  return get(ref(database, 'notice')).then((snapshot) => {
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
+    }
+    return [];
+  });
+}
+
+
+
 export async function getCart(userId) {
-  return get(ref(database, `carts/${userId}`)) //
+  return get(ref(database, `carts/${userId}`))
     .then((snapshot) => {
       const items = snapshot.val() || {};
       return Object.values(items);
