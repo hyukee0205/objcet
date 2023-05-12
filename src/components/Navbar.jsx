@@ -15,6 +15,7 @@ export default function Navbar() {
       </Link>
       <nav className='flex items-center gap-4 font-semibold'>
         <Link className='text-slate-50' to='/products'>Products</Link>
+        <Link className='text-slate-50' to='/notice'>Notice</Link>
         {user && (
           <Link to='/carts'>
             <CartStatus />

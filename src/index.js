@@ -10,6 +10,9 @@ import NewProduct from './pages/NewProduct';
 import MyCart from './pages/MyCart';
 import NotFound from './pages/NotFound';
 import ProtectedRoute from './pages/ProtectedRoute';
+import NewNotice from './pages/NewNotice';
+import NoticeDetail from './pages/NoticeDetail';
+import NoticeBoard from './pages/NoticeBoard';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +33,24 @@ const router = createBrowserRouter([
       {
         path: '/products/:id',
         element: <ProductDetail />,
+      },
+      {
+        path: '/notice',
+        element: (
+          <NoticeBoard />
+        ),
+      },
+      {
+        path: '/notice/new',
+        element: (
+          <NewNotice />
+        ),
+      },
+      {
+        path: '/notice/:id',
+        element: (
+          <NoticeDetail />
+        ),
       },
       {
         path: '/carts',
