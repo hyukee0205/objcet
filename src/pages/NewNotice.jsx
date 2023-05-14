@@ -7,8 +7,8 @@ import { useAuthContext } from '../context/AuthContext';
 export default function NewNotice() {
   const {user: {uid, displayName}} = useAuthContext();
 
-
   const [notice, setNotice] = useState({});
+  const [submissionTime, setSubmissionTime] = useState(null);
 
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -17,11 +17,20 @@ export default function NewNotice() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    addOrUpdateToNotice(notice);
+    const now = new Date();
+    setSubmissionTime(now.toISOString());
+    addOrUpdateToNotice({...notice, submissionTime: now.toISOString()});
   };
+
+  console.log(notice);
+
+
+  
+
+
   
   return (
-    <section className='p-8 mx-auto m-[80px]'> 
+    <section className='p-8 mx-auto mt-5 mb-20'> 
       <h2 className='p-4 text-2xl text-center font-bold mb-10'>게시판 등록</h2>
       <form onSubmit={handleSubmit} className='max-w-xl mx-auto'>
       <div className='mb-4'>

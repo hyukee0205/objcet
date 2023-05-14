@@ -70,7 +70,7 @@ export async function getProducts() {
 
 export async function addOrUpdateToNotice(notice) {
   const id = uuid();
-  return set(ref(database, `notice/${id}`), notice);
+  return set(ref(database, `notice/${id}`), {notice});
   // return set(ref(database, `notice/${userId}`), notice);
 
 }
