@@ -8,7 +8,6 @@ export default function NewNotice() {
   const {user: {uid, displayName}} = useAuthContext();
 
   const [notice, setNotice] = useState({});
-  const [submissionTime, setSubmissionTime] = useState(null);
 
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -17,12 +16,9 @@ export default function NewNotice() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const now = new Date();
-    setSubmissionTime(now.toISOString());
-    addOrUpdateToNotice({...notice, submissionTime: submissionTime});
+    addOrUpdateToNotice(notice);
   };
 
-  console.log(notice);
 
 
   

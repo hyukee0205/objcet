@@ -25,12 +25,13 @@ export default function Notice() {
               <td className="py-2 text-center">{index + 1}</td>
               <td className="py-2">{list.title}</td>
               <td className="py-2 text-center">{list.displayName}</td>
-              <td className="py-2 text-center">{list.content}</td>
+              <td className="py-2 text-center">{list.date}</td>
             </tr>
           ))}
         </tbody>
       </table>
     </>
+
   );
-};
+}
 

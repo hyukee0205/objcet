@@ -8,6 +8,8 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 import { getDatabase, ref, set, get, remove } from 'firebase/database';
+import moment from 'moment';
+import 'moment/locale/ko';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -70,7 +72,11 @@ export async function getProducts() {
 
 export async function addOrUpdateToNotice(notice) {
   const id = uuid();
-  return set(ref(database, `notice/${id}`), {notice});
+  const nowTime = moment().format('YYYY-MM-DD HH:mm');
+  return set(ref(database, `notice/${id}`), {
+    ...notice,
+    date: nowTime,
+  });
   // return set(ref(database, `notice/${userId}`), notice);
 
 }
