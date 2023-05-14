@@ -19,7 +19,7 @@ export default function NewNotice() {
     event.preventDefault();
     const now = new Date();
     setSubmissionTime(now.toISOString());
-    addOrUpdateToNotice({...notice, submissionTime: now.toISOString()});
+    addOrUpdateToNotice({...notice, submissionTime: submissionTime});
   };
 
   console.log(notice);
