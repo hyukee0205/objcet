@@ -31,7 +31,6 @@ export default function Notice({}) {
         </tbody>
       </table>
     </>
-
   );
-}
+};
 
