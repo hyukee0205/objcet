@@ -2,7 +2,7 @@ import React from 'react';
 import { getNotice } from '../api/firebase';
 import { useQuery } from '@tanstack/react-query';
 
-export default function Notice({}) {
+export default function Notice() {
   const {data: notice} = useQuery(['notice'], () => getNotice());
   console.log('notice', notice);
   
