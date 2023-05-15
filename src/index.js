@@ -13,6 +13,7 @@ import ProtectedRoute from './pages/ProtectedRoute';
 import NewNotice from './pages/NewNotice';
 import NoticeDetail from './pages/NoticeDetail';
 import NoticeBoard from './pages/NoticeBoard';
+import UpdateNotice from './pages/UpdateNotice';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,17 @@ const router = createBrowserRouter([
       {
         path: '/notice/new',
         element: (
-          <NewNotice />
+          <ProtectedRoute>
+            <NewNotice />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/notice/update/:id',
+        element: (
+          <ProtectedRoute>
+            <UpdateNotice />
+          </ProtectedRoute>
         ),
       },
       {

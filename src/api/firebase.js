@@ -7,7 +7,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
-import { getDatabase, ref, set, get, remove } from 'firebase/database';
+import { getDatabase, ref, set, get, remove, update} from 'firebase/database';
 import moment from 'moment';
 import 'moment/locale/ko';
 
@@ -39,7 +39,7 @@ export function onUserStateChange(callback) {
 }
 
 async function adminUser(user) {
-  return get(ref(database, 'admins')) //
+  return get(ref(database, 'admins'))
     .then((snapshot) => {
       if (snapshot.exists()) {
         const admins = snapshot.val();
@@ -70,16 +70,26 @@ export async function getProducts() {
   });
 }
 
-export async function addOrUpdateToNotice(notice) {
+export async function addToNotice(notice, uid, displayName) {
   const id = uuid();
   const nowTime = moment().format('YYYY-MM-DD HH:mm');
   return set(ref(database, `notice/${id}`), {
     ...notice,
+    id,
     date: nowTime,
+    uid,
+    displayName
   });
-  // return set(ref(database, `notice/${userId}`), notice);
-
 }
+
+export async function updateToNotice(notice) {
+  return update(ref(database, `notice/${notice.id}`), {
+    ...notice,
+    title: notice.title,
+    content: notice.content,
+  });
+}
+
 
 export async function getNotice() {
   return get(ref(database, 'notice')).then((snapshot) => {
@@ -88,8 +98,11 @@ export async function getNotice() {
     }
     return [];
   });
-}
+};
 
+export async function removeFromNotice(productId) {
+  return remove(ref(database, `notice/${productId}`));
+}
 
 
 export async function getCart(userId) {

@@ -2,8 +2,6 @@ import React from 'react';
 import Notice from '../components/Notice';
 import Button from '../components/ui/Button';
 import { Link } from 'react-router-dom';
-// import { getNotice } from '../api/firebase';
-// import { useQuery } from '@tanstack/react-query';
 
 export default function NoticeBoard() {
 

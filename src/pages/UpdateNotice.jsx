@@ -1,34 +1,44 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import { Link } from 'react-router-dom';
 import useNotice from '../hooks/useNotice';
 
-export default function NewNotice() {
-  const {addNotice} = useNotice();
+export default function UpdateNotice() {
 
-  const [notice, setNotice] = useState({});
-  const [success, setSuccess] = useState();
+  const {
+    state: {
+      list
+    }
+  } = useLocation();
+
+  const {updateNotice} = useNotice();
+
+  const [notice, setNotice] = useState({
+    ...list
+  });
+  // const [success, setSuccess] = useState();
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-    setNotice((notice) => ({ ...notice, [name]: value}));
+    setNotice((list) => ({ ...list, [name]: value}));
+    console.log(notice);
+    console.log(list.id);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addNotice.mutate(notice, {
+    updateNotice.mutate(notice, {
       onSuccess: () => {
-        setSuccess('게시글이 등록되었습니다.')
-        setTimeout(() => setSuccess(null), 3000);
+        // setSuccess('게시글이 수정되었습니다.')
+        // setTimeout(() => setSuccess(null), 3000);
+        return window.location.href = '/notice';
       }
     })
   }
-
-
-
   return (
     <section className='p-8 max-w-3xl mx-auto mt-5 mb-20'> 
-      {success && <p className='my-2'>{success}</p>}
+      {/* {success && <p className='my-2'>{success}</p>} */}
       <h2 className='p-4 text-2xl text-center font-bold mb-10'>게시판 등록</h2>
       <form onSubmit={handleSubmit} className='max-w-xl mx-auto'>
       <div className='mb-4'>
