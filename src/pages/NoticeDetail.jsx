@@ -22,9 +22,12 @@ export default function NoticeDetail() {
 
   const handleDelete = () => {
     if (window.confirm("정말 삭제하겠습니까?") === true) {
-      removeNotice.mutate(id);
-      alert('게시글이 삭제되었습니다.');
-      return window.location.href = '/notice';
+      removeNotice.mutate(id, {
+        onSuccess: () => {
+          alert('게시글이 삭제되었습니다.');
+          navigate('/notice');
+        }
+      }) 
     }
     return;
   };

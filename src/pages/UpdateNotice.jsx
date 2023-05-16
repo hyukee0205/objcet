@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import { Link } from 'react-router-dom';
 import useNotice from '../hooks/useNotice';
@@ -12,12 +12,12 @@ export default function UpdateNotice() {
     }
   } = useLocation();
 
+  const navigate = useNavigate();
   const {updateNotice} = useNotice();
 
   const [notice, setNotice] = useState({
     ...list
   });
-  // const [success, setSuccess] = useState();
 
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -30,9 +30,8 @@ export default function UpdateNotice() {
     e.preventDefault();
     updateNotice.mutate(notice, {
       onSuccess: () => {
-        // setSuccess('게시글이 수정되었습니다.')
-        // setTimeout(() => setSuccess(null), 3000);
-        return window.location.href = '/notice';
+        alert('게시글이 수정되었습니다.');
+        navigate('/notice');
       }
     })
   }

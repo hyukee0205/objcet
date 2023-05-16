@@ -26,8 +26,8 @@ export default function NewNotice() {
 
 
   return (
-    <section className='p-8 max-w-3xl mx-auto mt-4 mb-5'> 
-      <h2 className='p-4 text-2xl text-center font-bold mb-10'>게시판 등록</h2>
+    <section className='pt-4 pb-8 max-w-3xl mx-auto mb-5'> 
+      <h2 className='p-4 text-3xl text-center font-medium my-5'>게시판 등록</h2>
       <form onSubmit={handleSubmit} className='max-w-xl mx-auto'>
       <div className='mb-4'>
         <label htmlFor='title' className='block mb-2 font-bold'>Title</label>
