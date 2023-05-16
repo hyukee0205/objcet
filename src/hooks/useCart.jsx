@@ -25,7 +25,7 @@ export default function useCart() {
     },
   });
 
-  return {cartQuery, addOrUpdateItem, removeItem};
+  return {uid, cartQuery, addOrUpdateItem, removeItem};
 
 }
 

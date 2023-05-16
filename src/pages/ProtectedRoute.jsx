@@ -6,7 +6,6 @@ export default function ProtectedRoute({ children, requireAdmin }) {
   const { user } = useAuthContext();
 
   if (!user || (requireAdmin && !user.isAdmin)) {
-    alert('로그인 후 이용해 주세요.');
     return <Navigate to='/' replace />;
   }
 

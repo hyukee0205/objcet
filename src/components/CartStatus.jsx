@@ -9,8 +9,8 @@ export default function CartStatus() {
     <div className='relative text-slate-50'>
       <CiShoppingCart className='text-4xl' />
       {products && (
-        <p className='w-6 h-6 text-center bg-slate-50 text-slate-50 rounded-full absolute -top-1 -right-2'>
-          <span className='text-brand'>{products.length}</span>
+        <p style={{ backgroundColor: 'rgb(255, 72, 0)' }} className='w-6 h-6 text-center rounded-full absolute -top-1 -right-2'>
+          <span className='text-white'>{products.length}</span>
         </p>
       )}
     </div>

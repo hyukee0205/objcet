@@ -48,8 +48,8 @@ export default function NoticeDetail() {
           <Button       
           onClick={() => {
           navigate(`/notice/update/${id}`, { state:{ list } });
-          }} text='수정' design={'px-4 py-2 border border-black hover:bg-transparent hover:text-brand font-bold text-white bg-brand rounded-md mr-1'} />
-          <Button text='삭제' onClick={handleDelete} design={'px-4 py-2 font-bold border border-black hover:bg-brand hover:text-white rounded-md'}>삭제</Button>
+          }} text='수정' design={'px-4 py-2 border border-black hover:text-orange font-bold text-white bg-brand rounded-md mr-1'} />
+          <Button text='삭제' onClick={handleDelete} design={'px-4 py-2 font-bold border border-black hover:text-orange rounded-md'}>삭제</Button>
         </div>}
       </div>
     </section>

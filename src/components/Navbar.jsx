@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BsFillPencilFill } from 'react-icons/bs';
 import User from './User';
 import { useAuthContext } from '../context/AuthContext';
 import CartStatus from './CartStatus';
-import Button2 from './ui/Button2';
+import { MdAddToPhotos } from 'react-icons/md';
+import Button from './ui/Button';
+
 
 export default function Navbar() {
   const { user, login, logout } = useAuthContext();
@@ -14,21 +15,23 @@ export default function Navbar() {
         <h1 className='font-medium text-slate-50'>OBJECT</h1>
       </Link>
       <nav className='flex items-center gap-4 font-semibold'>
-        <Link className='text-slate-50' to='/products'>Products</Link>
-        <Link className='text-slate-50' to='/notice'>Notice</Link>
+        <Link className='text-slate-50' to='/products'>SHOP</Link>
+        <Link className='text-slate-50' to='/notice'>NOTICE</Link>
         {user && (
           <Link to='/carts'>
             <CartStatus />
           </Link>
         )}
+ 
         {user && user.isAdmin && (
-          <Link to='/products/new' className='text-2xl'>
-            <BsFillPencilFill className='text-slate-50' />
-          </Link>
+        <Link to='/products/new' className="flex ml-2 items-center py-2 px-3 justify-center bg-slate-50 text-brand rounded-sm cursor-pointer hover:text-orange">
+          <span className="mr-2">NEW</span>
+          <MdAddToPhotos size={20} />
+        </Link>
         )}
         {user && <User user={user} />}
-        {!user && <Button2 text={'Login'} onClick={login} />}
-        {user && <Button2 text={'Logout'} onClick={logout} />}
+        {!user && <Button text={'Login'} onClick={login}  design={'bg-slate-50 text-brand py-2 px-4 rounded-sm hover:text-orange'}/>}
+        {user && <Button text={'Logout'} onClick={logout} design={'bg-slate-50 text-brand py-2 px-4 rounded-sm hover:text-orange'}/>}
       </nav>
     </header>
   );

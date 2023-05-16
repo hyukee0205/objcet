@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import Button from '../components/ui/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useNotice from '../hooks/useNotice';
 
 export default function NewNotice() {
   const {addNotice} = useNotice();
-
+  const navigate = useNavigate();
   const [notice, setNotice] = useState({});
-  const [success, setSuccess] = useState();
 
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -18,8 +17,8 @@ export default function NewNotice() {
     e.preventDefault();
     addNotice.mutate(notice, {
       onSuccess: () => {
-        setSuccess('게시글이 등록되었습니다.')
-        setTimeout(() => setSuccess(null), 3000);
+        alert('게시글이 등록되었습니다.');
+        navigate('/notice');
       }
     })
   }
@@ -27,8 +26,7 @@ export default function NewNotice() {
 
 
   return (
-    <section className='p-8 max-w-3xl mx-auto mt-5 mb-20'> 
-      {success && <p className='my-2'>{success}</p>}
+    <section className='p-8 max-w-3xl mx-auto mt-4 mb-5'> 
       <h2 className='p-4 text-2xl text-center font-bold mb-10'>게시판 등록</h2>
       <form onSubmit={handleSubmit} className='max-w-xl mx-auto'>
       <div className='mb-4'>
@@ -42,8 +40,8 @@ export default function NewNotice() {
       <div className='flex justify-between'>
         <Link to='/notice' className='px-4 py-2 font-bold border border-black hover:bg-brand hover:text-white rounded-md'>목록</Link>
         <div>
-          <Button text='등록' type='submit' design={'px-4 py-2 border border-black hover:bg-transparent hover:text-brand font-bold text-white bg-brand rounded-md mr-1'} />
-          <Link to='/notice' className='px-4 py-2 font-bold border border-black hover:bg-brand hover:text-white rounded-md'>취소</Link>
+          <Button text='등록' type='submit' design={'px-4 py-2 border border-black hover:text-orange font-bold text-white bg-brand rounded-md mr-1'} />
+          <Link to='/notice' className='px-4 py-2 font-bold border border-black hover:text-orange rounded-md'>취소</Link>
         </div>
       </div>
     </form>

@@ -1,14 +1,14 @@
 import React from 'react';
-import { RiDeleteBin5Fill } from 'react-icons/ri';
-import { AiOutlinePlusSquare, AiOutlineMinusSquare } from 'react-icons/ai';
+import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose} from 'react-icons/ai';
 import useCart from '../hooks/useCart';
 
-const ICON_CLASS =
-  'transition-all cursor-pointer hover:text-brand hover:scale-105 mx-1';
+const ICON_CLASS = 'text-lg cursor-pointer mx-2';
 
 export default function CartItem({
   product,
   product: { id, image, title, option, quantity, price },
+  shipping,
+  orderPrice
 }) {
   const {addOrUpdateItem, removeItem} = useCart();
   const handleMinus = () => {
@@ -21,19 +21,31 @@ export default function CartItem({
   const handleDelete = () => removeItem.mutate(id);
 
   return (
-    <li className='flex justify-between my-2 items-center'>
-      <img className='w-24 md:w-48 rounded-lg' src={image} alt={title} />
-      <div className='flex-1 flex justify-between ml-4'>
-        <div className='basis-3/5'>
-          <p className='text-lg'>{title}</p>
-          <p className='text-xl font-bold text-brand'>{option}</p>
-          <p>₩{price}</p>
+    <li className='flex my-2 items-center'>
+      <div className='flex flex-1 items-center'>
+        <div className='flex basis-2/5'>
+          <img className='w-24 md:w-48 rounded-lg bg-detail' src={image} alt={title} />
+          <div className='flex flex-col justify-center ml-4'>
+            <div className='flex items-center mb-3'>
+              <p className='text-lg font-bold'>{title}</p>
+              <AiOutlineClose className='text-2xl cursor-pointer border border-brand m-2' onClick={handleDelete} />
+            </div>
+            <p className='text-base'>{price}원</p>
+            <p className='text-base'>옵션 : {option}</p>
+          </div>
         </div>
-        <div className='text-2xl flex items-center'>
-          <AiOutlineMinusSquare className={ICON_CLASS} onClick={handleMinus} />
-          <span>{quantity}</span>
-          <AiOutlinePlusSquare className={ICON_CLASS} onClick={handlePlus} />
-          <RiDeleteBin5Fill className={ICON_CLASS} onClick={handleDelete} />
+        <div className='flex text-2xl items-center basis-1/5 justify-center'>
+          <div className='flex items-center border'>
+            <AiOutlineMinus className={ICON_CLASS} onClick={handleMinus} />
+            <p className='px-3 border-x'>{quantity}</p>
+            <AiOutlinePlus className={ICON_CLASS} onClick={handlePlus} />
+          </div>
+        </div>
+        <div className='flex text-2xl items-center basis-1/5 justify-center font-semibold'>
+          <p>{orderPrice}원</p>
+        </div>
+        <div className='flex text-2xl items-center basis-1/5 justify-center font-semibold'>
+          <p>{shipping}원</p>
         </div>
       </div>
     </li>

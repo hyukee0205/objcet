@@ -1,14 +1,29 @@
 import React from 'react';
 import Notice from '../components/Notice';
 import Button from '../components/ui/Button';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../context/AuthContext';
 
 export default function NoticeBoard() {
+  const {uid} = useAuthContext();
+  const navigate = useNavigate();
 
   return (
     <section className="container w-full px-24 mx-auto mt-10 mb-20">
       <Notice />
-      <Link className='flex justify-end' to='/notice/new'><Button text={'게시글 작성'} design={'mt-4 px-4 py-2 border border-black hover:bg-transparent hover:text-brand font-bold text-white bg-brand rounded-md mr-1'}/></Link>
+      <div className='flex justify-end'>
+        <Button 
+          text={'게시글 작성'} 
+          onClick={() => {
+            if(uid) {
+              navigate('/notice/new');
+            } else {
+              alert('로그인 후 이용해 주세요.');
+            }
+          }}
+          design={'mt-4 px-4 py-2 border border-black font-bold text-white bg-brand rounded-md mr-1'}
+        />
+      </div>
     </section>
   );
 };

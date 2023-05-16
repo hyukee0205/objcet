@@ -10,7 +10,7 @@ export default function Notice() {
 
   return ( 
     <>
-      <h2 className="text-2xl font-bold mb-5">Notice</h2>
+      <h2 className="text-3xl font-medium mb-6">NOTICE</h2>
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <table className="w-full table-fixed">

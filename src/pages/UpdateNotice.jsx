@@ -52,8 +52,8 @@ export default function UpdateNotice() {
       <div className='flex justify-between'>
         <Link to='/notice' className='px-4 py-2 font-bold border border-black hover:bg-brand hover:text-white rounded-md'>목록</Link>
         <div>
-          <Button text='등록' type='submit' design={'px-4 py-2 border border-black hover:bg-transparent hover:text-brand font-bold text-white bg-brand rounded-md mr-1'} />
-          <Link to='/notice' className='px-4 py-2 font-bold border border-black hover:bg-brand hover:text-white rounded-md'>취소</Link>
+          <Button text='등록' type='submit' design={'px-4 py-2 border border-black hover:text-orange font-bold text-white bg-brand rounded-md mr-1'} />
+          <Link to='/notice' className='px-4 py-2 font-bold border border-black hover:text-orange rounded-md'>취소</Link>
         </div>
       </div>
     </form>
