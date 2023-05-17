@@ -91,14 +91,19 @@ export async function updateToNotice(notice) {
 }
 
 
+
+
 export async function getNotice() {
   return get(ref(database, 'notice')).then((snapshot) => {
     if (snapshot.exists()) {
-      return Object.values(snapshot.val());
+      const noticeData = snapshot.val();
+      const sortedNotice = Object.values(noticeData).sort((a, b) => new Date(b.date) - new Date(a.date));
+      return sortedNotice;
     }
     return [];
   });
-};
+}
+
 
 export async function removeFromNotice(productId) {
   return remove(ref(database, `notice/${productId}`));

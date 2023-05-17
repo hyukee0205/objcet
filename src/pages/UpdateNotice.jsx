@@ -8,7 +8,7 @@ export default function UpdateNotice() {
 
   const {
     state: {
-      list
+      data
     }
   } = useLocation();
 
@@ -16,14 +16,12 @@ export default function UpdateNotice() {
   const {updateNotice} = useNotice();
 
   const [notice, setNotice] = useState({
-    ...list
+    ...data
   });
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-    setNotice((list) => ({ ...list, [name]: value}));
-    console.log(notice);
-    console.log(list.id);
+    setNotice((data) => ({ ...data, [name]: value}));
   };
 
   const handleSubmit = (e) => {

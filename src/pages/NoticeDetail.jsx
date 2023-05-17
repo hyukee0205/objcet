@@ -10,10 +10,10 @@ export default function NoticeDetail() {
 
   const {
     state: {
-      list
+      data
     }
   } = useLocation();
-  const { id, title, content, displayName, date, uid} = list;
+  const { id, title, content, displayName, date, uid} = data;
 
 
   const {uid: userId} = useAuthContext();
@@ -32,6 +32,7 @@ export default function NoticeDetail() {
     return;
   };
 
+  
 
   return (
     <section className="container max-w-3xl px-24 mx-auto mt-10 mb-20">
@@ -50,7 +51,7 @@ export default function NoticeDetail() {
         {uid && uid === userId && <div>
           <Button       
           onClick={() => {
-          navigate(`/notice/update/${id}`, { state:{ list } });
+          navigate(`/notice/update/${id}`, { state:{ data } });
           }} text='수정' design={'px-4 py-2 border border-black hover:text-orange font-bold text-white bg-brand rounded-md mr-1'} />
           <Button text='삭제' onClick={handleDelete} design={'px-4 py-2 font-bold border border-black hover:text-orange rounded-md'}>삭제</Button>
         </div>}
