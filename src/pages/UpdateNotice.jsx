@@ -35,8 +35,7 @@ export default function UpdateNotice() {
   }
   return (
     <section className='p-8 max-w-3xl mx-auto mt-5 mb-20'> 
-      {/* {success && <p className='my-2'>{success}</p>} */}
-      <h2 className='p-4 text-2xl text-center font-bold mb-10'>게시판 등록</h2>
+      <h2 className='p-4 text-2xl text-center font-bold mb-10'>게시판 수정</h2>
       <form onSubmit={handleSubmit} className='max-w-xl mx-auto'>
       <div className='mb-4'>
         <label htmlFor='title' className='block mb-2 font-bold'>Title</label>

@@ -14,27 +14,6 @@ export default function Notice() {
   const limit = 10;
   const offset = (page-1)*limit; 
 
-  // const postsData = (notice) => {
-  //   if(notice){
-  //     let result = notice.slice(offset, offset + limit);
-  //     return result;
-  //   } else {
-  //     return [];
-  //   }
-  // }
-
-  // const postsData = (notice) => {
-  //   if (notice) {
-  //     let result = notice.slice(offset, offset + limit);
-  //     return result.map((item, index) => {
-  //       const pageNumber = offset + index + 1;
-  //       return { ...item, pageNumber };
-  //     });
-  //   } else {
-  //     return [];
-  //   }
-  // };
-
   const postsData = (notice) => {
     if (notice) {
       let result = notice.slice(offset, offset + limit);
@@ -48,20 +27,6 @@ export default function Notice() {
     }
   };
   
-
-  // const postsData = (notice) => {
-  //   if (notice) {
-  //     let result = notice.slice(offset, offset + limit);
-  //     return result.map((item, index) => {
-  //       const pageNumber = offset + limit - index;
-  //       return { ...item, pageNumber };
-  //     });
-  //   } else {
-  //     return [];
-  //   }
-  // };
-
-
   return ( 
     <>
       <h2 className="text-3xl font-medium mb-6">NOTICE</h2>

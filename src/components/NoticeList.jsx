@@ -19,7 +19,7 @@ export default function NoticeList({
                 onClick={() => {
                 navigate(`/notice/${id}`, {state: {data}} );
                 }} 
-                className="py-2 cursor-pointer"
+                className="py-2 cursor-pointer truncate"
               >{title}</td>
               <td className="py-2 text-center">{displayName}</td>
               <td className="py-2 text-center">{date}</td>
